@@ -35,6 +35,18 @@ int main(int argc, char* argv[])
 		break;
 	}
 
+	if (sizeX <= 0 || sizeY <= 0) {
+		cerr << "Usage:" << endl;
+		cerr << argv[0] << endl;
+		cerr << argv[0] << " <size>" << endl;
+		cerr << argv[0] << " <x> <y>" << endl;
+		cerr << argv[0] << " <x> <y> <source directory>" << endl;
+		cerr << argv[0] << " <x> <y> <source directory> <created file>" << endl;
+		cerr << argv[0] << "Defaults to 2x2, current directory, and \"random_tile.stl\"" << endl;
+		cerr << argv[0] << "This version uses a fixed " << TILESIZE << " tile size." << endl;
+	}
+
+
 	vector<filesystem::path> sources;
 	for (auto const& i : filesystem::directory_iterator(sourcedir)) {
 		if (i.path().extension() == ".stl") {
